@@ -41,7 +41,7 @@ const MainContainer = () => {
   return (
     <div className="main-container">
       <h1>Todo App</h1>
-      <div className="container">
+      <Box className="container">
         <Box
           sx={{
             display: "flex",
@@ -52,7 +52,6 @@ const MainContainer = () => {
           }}
         >
           <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-            <FeaturedPlayListIcon sx={{ color: "#2196f3", mr: 1, my: 0.5 }} />
             <TextField
               id="input-with-sx"
               label="Create a new Todo"
@@ -107,7 +106,7 @@ const MainContainer = () => {
             </Grid>
           )}
         </Box>
-      </div>
+      </Box>
     </div>
   );
 };
