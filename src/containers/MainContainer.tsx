@@ -14,18 +14,29 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 const MainContainer = () => {
-  const [Item, setItems] = useState([]);
+  const [Items, setItems] = useState([]);
   const [InputValue, setInputValue] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
-  const HandelClickAddtoList = () => {
-    if (InputValue != "") {
-      setItems((prev) => [InputValue, ...prev]);
-      setInputValue("");
+  const KeyDownAddtoList = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === "Enter") {
+      HandelClickAddtoList();
     }
+  };
+
+  const HandelClickAddtoList = () => {
+    if (InputValue != "" && !Items.includes(InputValue)) {
+      setItems((prev) => [InputValue, ...prev]);
+    }
+    setInputValue("");
+  };
+
+  const HandelClickDeleteList = (element) => {
+    const newList = Items.filter((item) => item !== element);
+    setItems(newList);
   };
 
   return (
@@ -50,6 +61,7 @@ const MainContainer = () => {
               className="inputTodo"
               value={InputValue}
               onChange={handleChange}
+              onKeyDown={KeyDownAddtoList}
             />
           </Box>
 
@@ -74,21 +86,27 @@ const MainContainer = () => {
         </Box>
 
         <Box className="list-container">
-          <Grid item xs={12} md={6} className="list-items">
-            <List>
-              {Item.map((element, index) => (
-                <ListItem className="items" key={index}>
-                  <ListItemText primary={element} />
-                  <IconButton aria-label="delete" color="primary">
-                    <ModeEditIcon />
-                  </IconButton>
-                  <IconButton aria-label="delete" className="remove-item">
-                    <DeleteIcon />
-                  </IconButton>
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
+          {Items.length > 0 && (
+            <Grid item xs={12} md={6} className="list-items">
+              <List>
+                {Items?.map((element) => (
+                  <ListItem className="items" key={element}>
+                    <ListItemText primary={element} />
+                    <IconButton aria-label="delete" color="primary">
+                      <ModeEditIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="delete"
+                      className="remove-item"
+                      onClick={() => HandelClickDeleteList(`${element}`)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+          )}
         </Box>
       </div>
     </div>
