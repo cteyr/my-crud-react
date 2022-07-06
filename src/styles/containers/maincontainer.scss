@@ -18,8 +18,13 @@
     width: 28vw;
     min-width: 350px;
     border: 3px solid rgb(155, 152, 152);
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 5px;
+
+    .inputTodo {
+      display: flex;
+      width: 90%;
+    }
 
     .list-container {
       display: flex;
