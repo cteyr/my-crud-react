@@ -15,6 +15,8 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 const MainContainer = () => {
   const [Items, setItems] = useState([]);
   const [InputValue, setInputValue] = useState("");
+  const [isButtonVisible, setisButtonVisible] = useState(true);
+  const [Index, setIndex] = useState(0);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -27,14 +29,28 @@ const MainContainer = () => {
   };
 
   const HandelClickAddtoList = () => {
-    if (InputValue != "" && !Items.includes(InputValue)) {
+    if (InputValue != "") {
       setItems((prev) => [InputValue, ...prev]);
     }
     setInputValue("");
   };
 
-  const HandelClickDeleteList = (element) => {
-    const newList = Items.filter((item) => item !== element);
+  const HandelClickEditButton = () => {
+    Items[Index] = InputValue;
+    setInputValue("");
+    setisButtonVisible(true);
+  };
+
+  const HandelClickEditIcon = (element, index) => {
+    setInputValue(element);
+    setisButtonVisible(false);
+    setIndex(index);
+  };
+
+  const HandelClickDeleteList = (element: String, index: number) => {
+    const newList = Items.filter((item) => {
+      return item !== element;
+    });
     setItems(newList);
   };
 
@@ -69,17 +85,31 @@ const MainContainer = () => {
               marginTop: "0.6rem",
             }}
           >
-            <Button
-              variant="contained"
-              startIcon={<AddBoxRoundedIcon />}
-              color="success"
-              onClick={HandelClickAddtoList}
-              sx={{
-                borderRadius: "5 px",
-              }}
-            >
-              Add
-            </Button>
+            {isButtonVisible ? (
+              <Button
+                variant="contained"
+                startIcon={<AddBoxRoundedIcon />}
+                color="success"
+                onClick={HandelClickAddtoList}
+                sx={{
+                  borderRadius: "5 px",
+                }}
+              >
+                Add
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                startIcon={<ModeEditIcon />}
+                color="primary"
+                onClick={HandelClickEditButton}
+                sx={{
+                  borderRadius: "5 px",
+                }}
+              >
+                Edit
+              </Button>
+            )}
           </Box>
         </Box>
 
@@ -87,16 +117,20 @@ const MainContainer = () => {
           {Items.length > 0 && (
             <Grid item xs={12} md={6} className="list-items">
               <List>
-                {Items?.map((element) => (
-                  <ListItem className="items" key={element}>
+                {Items?.map((element, index) => (
+                  <ListItem className="items" key={index}>
                     <ListItemText primary={element} />
-                    <IconButton aria-label="delete" color="primary">
+                    <IconButton
+                      aria-label="delete"
+                      color="primary"
+                      onClick={() => HandelClickEditIcon(element, index)}
+                    >
                       <ModeEditIcon />
                     </IconButton>
                     <IconButton
                       aria-label="delete"
                       className="remove-item"
-                      onClick={() => HandelClickDeleteList(`${element}`)}
+                      onClick={() => HandelClickDeleteList(`${element}`, index)}
                     >
                       <DeleteIcon />
                     </IconButton>
