@@ -11,12 +11,14 @@ import IconButton from "@mui/material/IconButton";
 import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { v4 } from "uuid";
 
 const MainContainer = () => {
-  const [Items, setItems] = useState([]);
+  const [Items, setItems] = useState<Item[]>([]);
   const [InputValue, setInputValue] = useState("");
   const [isButtonVisible, setisButtonVisible] = useState(true);
   const [Index, setIndex] = useState(0);
+  const [Element, setElement] = useState<Item>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -32,28 +34,31 @@ const MainContainer = () => {
 
   const HandelClickAddtoList = () => {
     if (InputValue != "") {
-      setItems((prev) => [InputValue, ...prev]);
+      const newItem: Item = { id: v4(), text: `${InputValue}` };
+      setItems((prev) => [newItem, ...prev]);
     }
     setInputValue("");
   };
 
   const HandelClickEditButton = () => {
-    Items[Index] = InputValue;
+    Items[Index] = { id: Element.id, text: `${InputValue}` };
     setInputValue("");
     setisButtonVisible(true);
   };
 
   const HandelClickEditIcon = (element, index) => {
-    setInputValue(element);
+    setElement(element);
+    setInputValue(element.text);
     setisButtonVisible(false);
     setIndex(index);
   };
 
-  const HandelClickDeleteList = (element: String, index: number) => {
+  const HandelClickDeleteList = (id) => {
     const newList = Items.filter((item) => {
-      return item !== element;
+      return item.id !== id;
     });
     setItems(newList);
+    setInputValue("");
   };
 
   return (
@@ -121,7 +126,10 @@ const MainContainer = () => {
               <List>
                 {Items?.map((element, index) => (
                   <ListItem className="items" key={index}>
-                    <ListItemText className="item-text" primary={element} />
+                    <ListItemText
+                      className="item-text"
+                      primary={element.text}
+                    />
                     <IconButton
                       aria-label="delete"
                       color="primary"
@@ -132,7 +140,7 @@ const MainContainer = () => {
                     <IconButton
                       aria-label="delete"
                       className="remove-item"
-                      onClick={() => HandelClickDeleteList(`${element}`, index)}
+                      onClick={() => HandelClickDeleteList(element.id)}
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -146,4 +154,10 @@ const MainContainer = () => {
     </div>
   );
 };
+
+type Item = {
+  id: String;
+  text: String;
+};
+
 export { MainContainer };
