@@ -121,7 +121,7 @@ const MainContainer = () => {
               <List>
                 {Items?.map((element, index) => (
                   <ListItem className="items" key={index}>
-                    <ListItemText primary={element} />
+                    <ListItemText className="item-text" primary={element} />
                     <IconButton
                       aria-label="delete"
                       color="primary"
