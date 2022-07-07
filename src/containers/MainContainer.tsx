@@ -23,8 +23,10 @@ const MainContainer = () => {
   };
 
   const KeyDownAddtoList = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.code === "Enter") {
+    if (event.code === "Enter" && isButtonVisible == true) {
       HandelClickAddtoList();
+    } else if (event.code === "Enter" && isButtonVisible == false) {
+      HandelClickEditButton();
     }
   };
 
