@@ -1,0 +1,37 @@
+.list-container {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .list-items {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .items {
+      border: 1px solid rgb(124, 121, 121);
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+
+      .item-text {
+        color: rgb(124, 121, 121);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .remove-item {
+        color: red;
+      }
+    }
+  }
+}

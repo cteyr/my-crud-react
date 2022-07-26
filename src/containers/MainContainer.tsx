@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
 import { Box } from "@mui/material";
 import { Input } from "../components/Input";
-import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
+import { Boton } from "../components/Button";
+import { ListContainer } from "../containers/ListContainer";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
-
-import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import IconButton from "@mui/material/IconButton";
-import ListItemText from "@mui/material/ListItemText";
-import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { Item } from "../types/Item";
 import { v4 } from "uuid";
 
 const MainContainer = () => {
@@ -89,71 +83,32 @@ const MainContainer = () => {
             }}
           >
             {isButtonVisible ? (
-              <Button
-                variant="contained"
-                startIcon={<AddBoxRoundedIcon />}
-                color="success"
+              <Boton
+                clasname="submit-button"
                 onClick={HandelClickAddtoList}
-                sx={{
-                  borderRadius: "5 px",
-                }}
-              >
-                Add
-              </Button>
+                color={"success"}
+                icon={<AddBoxRoundedIcon />}
+                text="Add"
+              />
             ) : (
-              <Button
-                variant="contained"
-                startIcon={<ModeEditIcon />}
-                color="primary"
+              <Boton
+                clasname="submit-button"
                 onClick={HandelClickEditButton}
-                sx={{
-                  borderRadius: "5 px",
-                }}
-              >
-                Edit
-              </Button>
+                color={"primary"}
+                icon={<ModeEditIcon />}
+                text="Edit"
+              />
             )}
           </Box>
         </Box>
-
-        <Box className="list-container">
-          {Items.length > 0 && (
-            <Grid item xs={12} md={6} className="list-items">
-              <List>
-                {Items?.map((element, index) => (
-                  <ListItem className="items" key={index}>
-                    <ListItemText
-                      className="item-text"
-                      primary={element.text}
-                    />
-                    <IconButton
-                      aria-label="delete"
-                      color="primary"
-                      onClick={() => HandelClickEditIcon(element, index)}
-                    >
-                      <ModeEditIcon />
-                    </IconButton>
-                    <IconButton
-                      aria-label="delete"
-                      className="remove-item"
-                      onClick={() => HandelClickDeleteList(element.id)}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItem>
-                ))}
-              </List>
-            </Grid>
-          )}
-        </Box>
+        <ListContainer
+          Items={Items}
+          HandelClickDeleteList={HandelClickDeleteList}
+          HandelClickEditIcon={HandelClickEditIcon}
+        />
       </Box>
     </div>
   );
-};
-
-type Item = {
-  id: String;
-  text: String;
 };
 
 export { MainContainer };
