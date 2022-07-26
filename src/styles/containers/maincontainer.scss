@@ -6,19 +6,13 @@
   justify-content: center;
   flex-direction: column;
 
-  h1 {
-    margin-bottom: 1rem;
-    color: hsl(240, 5%, 38%);
-  }
-
   .container {
     display: flex;
     flex-direction: column;
     height: 80vh;
     width: 28vw;
     min-width: 350px;
-
-    box-shadow: 0px 0px 3px 1px rgb(155, 152, 152);
+    box-shadow: 0px 0px 3px 1px hsl(240, 5%, 38%);
     padding: 1.5rem;
     border-radius: 5px;
     @media screen and (min-width: 768px) {
