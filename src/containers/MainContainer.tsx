@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { Box } from "@mui/material";
+import { Input } from "../components/Input";
 import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
-import TextField from "@mui/material/TextField";
+
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -75,17 +76,12 @@ const MainContainer = () => {
           }}
         >
           <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-            <TextField
-              id="input-with-sx"
-              label="Create a new Todo"
-              variant="standard"
-              className="inputTodo"
+            <Input
               value={InputValue}
               onChange={handleChange}
               onKeyDown={KeyDownAddtoList}
             />
           </Box>
-
           <Box
             sx={{
               display: "flex",
