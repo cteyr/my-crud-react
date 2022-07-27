@@ -1,0 +1,15 @@
+.items {
+  border: 1px solid rgb(124, 121, 121);
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+
+  .item-text {
+    color: hsl(240, 5%, 38%);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .remove-item {
+    color: red;
+  }
+}

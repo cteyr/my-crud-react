@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 import { Input } from "../components/Input";
 import { Boton } from "../components/Button";
-import { Tittle } from "../components/Tittle";
+import { Header } from "../components/Header";
 import { ListContainer } from "../containers/ListContainer";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
@@ -59,7 +59,7 @@ const MainContainer = () => {
 
   return (
     <div className="main-container">
-      <Tittle />
+      <Header />
       <Box className="container">
         <Box
           sx={{
