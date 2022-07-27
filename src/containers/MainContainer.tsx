@@ -104,8 +104,8 @@ const MainContainer = () => {
         </Box>
         <ListContainer
           Items={Items}
-          HandelClickDeleteList={HandelClickDeleteList}
           HandelClickEditIcon={HandelClickEditIcon}
+          HandelClickDeleteList={HandelClickDeleteList}
         />
       </Box>
     </div>

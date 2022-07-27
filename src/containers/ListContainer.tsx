@@ -1,17 +1,13 @@
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import IconButton from "@mui/material/IconButton";
-import ListItemText from "@mui/material/ListItemText";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { DataItem } from "../components/DataItem";
 import { Item } from "../types/Item";
 
 const ListContainer = ({
+  Items,
   HandelClickEditIcon,
   HandelClickDeleteList,
-  Items,
 }: IProps) => {
   return (
     <Box className="list-container">
@@ -19,23 +15,13 @@ const ListContainer = ({
         <Grid item xs={12} md={6} className="list-items">
           <List>
             {Items?.map((element, index) => (
-              <ListItem className="items" key={element.id}>
-                <ListItemText className="item-text" primary={element.text} />
-                <IconButton
-                  aria-label="delete"
-                  color="primary"
-                  onClick={() => HandelClickEditIcon(element, index)}
-                >
-                  <ModeEditIcon />
-                </IconButton>
-                <IconButton
-                  aria-label="delete"
-                  className="remove-item"
-                  onClick={() => HandelClickDeleteList(element.id)}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </ListItem>
+              <DataItem
+                key={element.id}
+                element={element}
+                index={index}
+                HandelClickDeleteList={HandelClickDeleteList}
+                HandelClickEditIcon={HandelClickEditIcon}
+              />
             ))}
           </List>
         </Grid>
