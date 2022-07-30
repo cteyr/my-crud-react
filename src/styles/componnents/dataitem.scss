@@ -7,6 +7,15 @@
     color: hsl(240, 5%, 38%);
     overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .item-text.completed {
+    text-decoration: line-through;
   }
 
   .remove-item {

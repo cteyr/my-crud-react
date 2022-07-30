@@ -16,6 +16,7 @@ const ListContainer = ({
           <List>
             {Items?.map((element, index) => (
               <DataItem
+                classname={`item-text `}
                 key={element.id}
                 element={element}
                 index={index}
