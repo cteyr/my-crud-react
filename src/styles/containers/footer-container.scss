@@ -1,0 +1,17 @@
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 3.5rem;
+  width: 30vw;
+  min-width: 400px;
+  box-shadow: 0px 0px 3px 1px hsl(240, 5%, 38%);
+  padding: 0.7rem;
+  border-radius: 5px;
+
+  @media screen and (max-width: 768px) {
+    min-width: 0%;
+    width: 95%;
+  }
+}

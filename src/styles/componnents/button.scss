@@ -1,3 +1,9 @@
 .submit-button {
   border-radius: 5px;
 }
+p {
+  color: hsl(240, 5%, 38%);
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -4,6 +4,7 @@ import { Input } from "../components/Input";
 import { Boton } from "../components/Button";
 import { Header } from "../components/Header";
 import { ListContainer } from "../containers/ListContainer";
+import { FooterContainer } from "../containers/FooterContainer";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { Item } from "../types/Item";
@@ -108,6 +109,7 @@ const MainContainer = () => {
           HandelClickDeleteList={HandelClickDeleteList}
         />
       </Box>
+      <FooterContainer />
     </div>
   );
 };

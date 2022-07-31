@@ -15,8 +15,8 @@ const Boton = ({ clasname, text, color, onClick, icon }: IProps) => {
 };
 
 type IProps = {
-  onClick: () => void;
-  icon: any;
+  onClick?: () => void;
+  icon?: any;
   color?: any;
   text?: string;
   clasname?: string;

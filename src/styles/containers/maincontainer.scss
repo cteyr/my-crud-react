@@ -5,18 +5,20 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  gap: 1rem;
   .container {
     display: flex;
     flex-direction: column;
-    height: 80vh;
-    width: 28vw;
-    min-width: 350px;
+    height: 74vh;
+    width: 30vw;
+    min-width: 400px;
     box-shadow: 0px 0px 3px 1px hsl(240, 5%, 38%);
     padding: 1.5rem;
     border-radius: 5px;
-    @media screen and (min-width: 768px) {
+    @media screen and (max-width: 768px) {
       padding: 2rem;
+      min-width: 0%;
+      width: 95%;
     }
   }
 }
