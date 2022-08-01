@@ -14,16 +14,18 @@ const DataItem = ({
   classname,
 }: IProps) => {
   const [Complete, setComplete] = useState("");
-  const [Disabled, setDisabled] = useState(false);
+  //const [Disabled, setDisabled] = useState(false);
 
   const selected = () => {
     if (Complete === "completed") {
       setComplete("");
-      setDisabled(false);
+      //setDisabled(false);
+      element.completed = false;
       return;
     }
     setComplete("completed");
-    setDisabled(true);
+    // setDisabled(true);
+    element.completed = true;
   };
 
   return (
@@ -37,7 +39,7 @@ const DataItem = ({
         aria-label="delete"
         color="primary"
         onClick={() => HandelClickEditIcon(element, index)}
-        disabled={Disabled}
+        //disabled={Disabled}
       >
         <ModeEditIcon />
       </IconButton>
@@ -45,7 +47,7 @@ const DataItem = ({
         aria-label="delete"
         className="remove-item"
         onClick={() => HandelClickDeleteList(element.id)}
-        disabled={Disabled}
+        //disabled={Disabled}
       >
         <DeleteIcon />
       </IconButton>
