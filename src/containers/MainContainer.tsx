@@ -9,6 +9,7 @@ import { FooterContainer } from "../containers/FooterContainer";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { Item } from "../types/Item";
+import { IFilter } from "../types/Item";
 import { v4 } from "uuid";
 import { useItem } from "../hooks/useItem";
 
@@ -44,18 +45,18 @@ const reducer = (state, action) => {
 
 const MainContainer = () => {
   const { Items, setItems } = useItem();
-  const [Filter, setFilter] = useState("");
+  const [Filter, setFilter] = useState<IFilter>("all");
   const [InputValue, setInputValue] = useState("");
   const [isButtonVisible, setisButtonVisible] = useState(true);
   const [Index, setIndex] = useState(0);
   const [Element, setElement] = useState<Item>();
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const getfilterItems = (Items, filter: string): Item[] => {
-    if (filter === "selected") {
+  const getfilterItems = (Items, IFilter: string): Item[] => {
+    if (IFilter === "selected") {
       const filtered = Items.filter((element) => element.completed === true);
       return filtered;
-    } else if (filter === "active") {
+    } else if (IFilter === "active") {
       const filtered = Items.filter((element) => element.completed === false);
       return filtered;
     }
