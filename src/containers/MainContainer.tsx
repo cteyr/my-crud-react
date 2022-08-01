@@ -31,14 +31,22 @@ const MainContainer = () => {
 
   const HandelClickAddtoList = () => {
     if (InputValue != "") {
-      const newItem: Item = { id: v4(), text: `${InputValue}` };
+      const newItem: Item = {
+        id: v4(),
+        text: `${InputValue}`,
+        completed: false,
+      };
       setItems((prev) => [newItem, ...prev]);
     }
     setInputValue("");
   };
 
   const HandelClickEditButton = () => {
-    Items[Index] = { id: Element.id, text: `${InputValue}` };
+    Items[Index] = {
+      id: Element.id,
+      text: `${InputValue}`,
+      completed: Element.completed,
+    };
     setInputValue("");
     setisButtonVisible(true);
   };
