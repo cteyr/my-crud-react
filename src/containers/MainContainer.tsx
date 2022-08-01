@@ -11,7 +11,6 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { Item } from "../types/Item";
 import { IFilter } from "../types/Item";
 import { v4 } from "uuid";
-import { useItem } from "../hooks/useItem";
 
 const initialState = {
   all: "selected",
@@ -44,7 +43,7 @@ const reducer = (state, action) => {
 };
 
 const MainContainer = () => {
-  const { Items, setItems } = useItem();
+  const [Items, setItems] = useState<Item[]>([]);
   const [Filter, setFilter] = useState<IFilter>("all");
   const [InputValue, setInputValue] = useState("");
   const [isButtonVisible, setisButtonVisible] = useState(true);
@@ -52,11 +51,11 @@ const MainContainer = () => {
   const [Element, setElement] = useState<Item>();
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const getfilterItems = (Items, IFilter: string): Item[] => {
-    if (IFilter === "selected") {
+  const getfilterItems = (Items, Filter: IFilter): Item[] => {
+    if (Filter === "selected") {
       const filtered = Items.filter((element) => element.completed === true);
       return filtered;
-    } else if (IFilter === "active") {
+    } else if (Filter === "active") {
       const filtered = Items.filter((element) => element.completed === false);
       return filtered;
     }
@@ -66,19 +65,19 @@ const MainContainer = () => {
   const HandelSelectAll = () => {
     dispatch({ type: "all" });
     setFilter("all");
-    getfilterItems(Items, "all");
+    getfilterItems(Items, Filter);
   };
 
   const HandelSelectActive = () => {
     dispatch({ type: "active" });
     setFilter("active");
-    getfilterItems(Items, "active");
+    getfilterItems(Items, Filter);
   };
 
   const HandelSelectCompleted = () => {
     dispatch({ type: "selected" });
     setFilter("selected");
-    getfilterItems(Items, "selected");
+    getfilterItems(Items, Filter);
   };
 
   const KeyDownAddtoList = (event: React.KeyboardEvent<HTMLInputElement>) => {
