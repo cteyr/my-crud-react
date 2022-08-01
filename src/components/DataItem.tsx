@@ -13,17 +13,17 @@ const DataItem = ({
   index,
   classname,
 }: IProps) => {
-  const [Complete, setComplete] = useState("");
+  const [Complete, setComplete] = useState(Boolean);
   //const [Disabled, setDisabled] = useState(false);
 
   const selected = () => {
-    if (Complete === "completed") {
-      setComplete("");
+    if (Complete === true) {
+      setComplete(false);
       //setDisabled(false);
       element.completed = false;
       return;
     }
-    setComplete("completed");
+    setComplete(true);
     // setDisabled(true);
     element.completed = true;
   };
@@ -31,7 +31,9 @@ const DataItem = ({
   return (
     <ListItem className="items" key={element.id}>
       <ListItemText
-        className={`${classname}${Complete}`}
+        className={`${classname}${
+          element.completed === true ? `completed` : ""
+        }`}
         primary={element.text}
         onClick={selected}
       />
