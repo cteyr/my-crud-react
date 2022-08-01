@@ -81,10 +81,6 @@ const MainContainer = () => {
     getfilterItems(Items, "selected");
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   const KeyDownAddtoList = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter" && isButtonVisible == true) {
       HandelClickAddtoList();
@@ -146,7 +142,9 @@ const MainContainer = () => {
           <Box sx={{ display: "flex", alignItems: "flex-end" }}>
             <Input
               value={InputValue}
-              onChange={handleChange}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setInputValue(event.target.value)
+              }
               onKeyDown={KeyDownAddtoList}
             />
           </Box>
