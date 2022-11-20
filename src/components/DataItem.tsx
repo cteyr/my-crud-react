@@ -21,11 +21,12 @@ const DataItem = ({
       setComplete(false);
       //setDisabled(false);
       element.completed = false;
-      return;
+    }else if (Complete === false){
+      setComplete(true);
+      // setDisabled(true);
+      element.completed = true;
     }
-    setComplete(true);
-    // setDisabled(true);
-    element.completed = true;
+   
   };
 
   return (
