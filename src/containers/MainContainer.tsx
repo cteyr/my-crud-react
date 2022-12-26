@@ -101,13 +101,16 @@ const MainContainer = () => {
   };
 
   const HandelClickEditButton = () => {
-    Items[Index] = {
-      id: Element.id,
-      text: `${InputValue}`,
-      completed: Element.completed,
-    };
+    if (InputValue != "") {
+      Items[Index] = {
+        id: Element.id,
+        text: `${InputValue}`,
+        completed: Element.completed,
+      };
+      setisButtonVisible(true);
+    };  
     setInputValue("");
-    setisButtonVisible(true);
+   
   };
 
   const HandelClickEditIcon = (element, index) => {
