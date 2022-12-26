@@ -81,7 +81,6 @@ const MainContainer = () => {
   };
 
   const KeyDownAddtoList = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("Presionada: " + event.code );
     if ((event.code === "Enter" || event.code ==="NumpadEnter" ) && isButtonVisible == true) {
       HandelClickAddtoList();
     } else if ((event.code === "Enter" || event.code ==="NumpadEnter" ) && isButtonVisible == false) {
