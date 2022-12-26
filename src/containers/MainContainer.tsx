@@ -81,9 +81,9 @@ const MainContainer = () => {
   };
 
   const KeyDownAddtoList = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.code === "Enter" && isButtonVisible == true) {
+    if (event.code === "Enter"||event.code === "NumpadEnter" && isButtonVisible == true) {
       HandelClickAddtoList();
-    } else if (event.code === "Enter" && isButtonVisible == false) {
+    } else if (event.code === "Enter"||event.code === "NumpadEnter" && isButtonVisible == false) {
       HandelClickEditButton();
     }
   };
@@ -138,7 +138,7 @@ const MainContainer = () => {
             height: "3rem",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+          <Box sx={{ display: "flex", alignItems: "flex-end", width:"70%" }}>
             <Input
               value={InputValue}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
