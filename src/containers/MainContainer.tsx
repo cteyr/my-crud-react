@@ -114,6 +114,7 @@ const MainContainer = () => {
   };
 
   const HandelClickEditIcon = (element, index) => {
+    document.getElementById('input-with-sx').focus();
     setElement(element);
     setInputValue(element.text);
     setisButtonVisible(false);
