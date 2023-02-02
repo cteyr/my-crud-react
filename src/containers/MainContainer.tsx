@@ -126,7 +126,12 @@ const MainContainer = () => {
       return item.id !== id;
     });
     setItems(newList);
-    setInputValue("");
+
+    if(isButtonVisible==false){
+      setInputValue("");
+      setisButtonVisible(true);
+    }
+    
   };
 
   return (
